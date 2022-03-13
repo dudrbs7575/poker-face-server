@@ -1,0 +1,19 @@
+spring:
+  profiles:
+    active: local #local, production
+
+logging:
+  level:
+    root: INFO
+    web: INFO
+    io:
+      swagger:
+        models:
+          parameters:
+            AbstractSerializableParameter: INFO
+    org:
+      hibernate:
+        SQL: INFO
+        type:
+          descriptor:
+            BasicBinder: TRACE
