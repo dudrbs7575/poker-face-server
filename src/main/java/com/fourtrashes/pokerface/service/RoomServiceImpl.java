@@ -1,13 +1,17 @@
 package com.fourtrashes.pokerface.service;
 
 import com.fourtrashes.pokerface.domain.Room;
+import com.fourtrashes.pokerface.repository.RoomRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class RoomServiceImpl implements RoomService{
+    private final RoomRepository roomRepository;
+
     @Override
     public Optional<Room> createRoom() {
         return Optional.empty();
@@ -21,10 +25,5 @@ public class RoomServiceImpl implements RoomService{
     @Override
     public Integer leaveRoom(Long roomId) {
         return null;
-    }
-
-    @Override
-    public Optional<List<Room>> getRoomList() {
-        return Optional.empty();
     }
 }

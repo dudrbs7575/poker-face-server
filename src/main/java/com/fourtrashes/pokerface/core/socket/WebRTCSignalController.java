@@ -3,6 +3,7 @@ package com.fourtrashes.pokerface.core.socket;
 import com.fourtrashes.pokerface.domain.Room;
 import com.fourtrashes.pokerface.dto.SignalingDTO;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import java.util.HashMap;
 import java.util.Map;
 
+@Slf4j
 @Controller
 @RequiredArgsConstructor
 public class WebRTCSignalController {
@@ -21,11 +23,17 @@ public class WebRTCSignalController {
     private Map<String, Object> roomCashMap = new HashMap<>();
 
     // 차후 DB에서 가져오도록 변경
-    private Map<Long, Room> roomList = new HashMap<>();
+    private Map<String, Room> roomList = new HashMap<>();
 
     @MessageMapping(value = "/join/room/{roomId}")
-    public void joinRoom(@DestinationVariable("roomId") Long roomId,
-                         SimpMessageHeaderAccessor header) {
+    public void joinRoom(
+            @DestinationVariable int roomId,
+            SimpMessageHeaderAccessor header,
+            @Payload SignalingDTO.RoomJoinRequest request
+    ) {
+        log.info("request type: " + roomId);
+        log.info("room id: " + request.getType());
+
         Object room = roomList.get(roomId);
         Object userRoomMappingInfo = roomCashMap.get(header.getSessionId());
         if (room == null) {
@@ -45,14 +53,14 @@ public class WebRTCSignalController {
              * */
         }
 
-//        SignalingDTO payload = new SignalingDTO(header.getSessionId(), "SERVER",
-//                SignalCode.Message.JOIN.getValue(), roomId);
-        messagingTemplate.convertAndSend("/sub/room/" + roomId);
+        messagingTemplate.convertAndSend("/sub/room/" + roomId, "");
     }
 
     @MessageMapping(value = "/offer/room/{roomId}")
-    public void offer(@Payload SignalingDTO payload2, SimpMessageHeaderAccessor header) {
-//        SignalingDTO payload = new SignalingDTO(header.getSessionId(), payload2.getTo(),
-//                SignalCode.Message.JOIN.getValue(), payload2.getRoomId());
+    public void offer(@Payload SignalingDTO payload, SimpMessageHeaderAccessor header) {
+    }
+
+    @MessageMapping(value = "/answer/room/{roomId}")
+    public void answer(@Payload SignalingDTO payload, SimpMessageHeaderAccessor header) {
     }
 }

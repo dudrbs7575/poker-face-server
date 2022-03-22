@@ -11,7 +11,7 @@ public class SignalingDTO {
     @AllArgsConstructor
     @Getter
     @Setter
-    static class CandidateRequest {
+    public static class CandidateRequest {
         private String to;
         private String type;   // offer, answer, join
         private String roomId;   //차후 String or Integer로 결정 필요
@@ -22,7 +22,8 @@ public class SignalingDTO {
     @AllArgsConstructor
     @Getter
     @Setter
-    static class CandidateResponse {
+    public static class CandidateResponse {
+        private Long code;
         private String from;
         private String type;   // offer, answer, join
         private Object candidate;
@@ -32,7 +33,7 @@ public class SignalingDTO {
     @AllArgsConstructor
     @Getter
     @Setter
-    static class SdpRequest {
+    public static class SdpRequest {
         private String to;
         private String type;   // offer, answer, join
         private String roomId;   //차후 String or Integer로 결정 필요
@@ -43,7 +44,8 @@ public class SignalingDTO {
     @AllArgsConstructor
     @Getter
     @Setter
-    static class SdpResponse {
+    public static class SdpResponse {
+        private Long code;
         private String from;
         private String type;   // offer, answer, join
         private Object sdp;
@@ -53,16 +55,16 @@ public class SignalingDTO {
     @AllArgsConstructor
     @Getter
     @Setter
-    static class RoomJoinRequest {
+    public static class RoomJoinRequest {
         private String type;   // offer, answer, join
-        private String roomId;   //차후 String or Integer로 결정 필요
     }
 
     @NoArgsConstructor
     @AllArgsConstructor
     @Getter
     @Setter
-    static class RoomJoinResponse {
+    public static class RoomJoinResponse {
+        private Long code;
         private String from;   // offer, answer, join
     }
 }
