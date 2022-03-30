@@ -1,6 +1,7 @@
-package user.example.userCRUD.model;
+package com.fourtrashes.pokerface.domain;
 
 
+import com.fourtrashes.pokerface.domain.BaseDomain;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,7 +15,7 @@ import javax.persistence.*;
 @Setter
 @Entity
 @Table(name = "user")
-public class User {
+public class User extends BaseDomain {
 
     @Id
     @Column(name="userNo")
