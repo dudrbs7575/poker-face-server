@@ -1,4 +1,4 @@
-package user.example.userCRUD.model;
+package com.fourtrashes.pokerface.domain;
 
 public enum UserStatus {
     ACTIVE, DEACTIVATED
