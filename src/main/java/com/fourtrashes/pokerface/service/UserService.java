@@ -18,15 +18,11 @@ public class UserService {
     public User createUser(UserCreationRequest userInfo){
         User user = new User();
         log.info(userInfo.toString());
-        //        BeanUtils.copyProperties(user,userInfo);
         System.out.println("user = " + user);
         user.setUserId(userInfo.getUserId());
         user.setUserNickname(userInfo.getUserNickname());
         user.setUserPassword(passwordEncoder.encode(userInfo.getUserPassword()));
-//        user.setUserPassword(userInfo.getUserPassword());
-//        log.info(passwordEncoder.encode(userInfo.getUserPassword()));
         user.setUserSalt(passwordEncoder.encode(userInfo.getUserSalt()));
-//        user.setUserSalt(userInfo.getUserSalt());
         user.setUserName(userInfo.getUserName());
         user.setMoney(userInfo.getMoney());
         log.info(user.toString());
