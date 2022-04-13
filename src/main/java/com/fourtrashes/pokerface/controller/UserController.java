@@ -18,7 +18,6 @@ public class UserController {
 
     @PostMapping("/sign-up")
     public ResponseEntity<User> insertUser (@RequestBody UserCreationRequest request){
-        System.out.println("request = " + request);
         return ResponseEntity.ok(userService.createUser(request));
     }
 }
