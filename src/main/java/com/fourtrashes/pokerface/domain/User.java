@@ -1,7 +1,10 @@
 package com.fourtrashes.pokerface.domain;
 
 
+
+
 import com.fourtrashes.pokerface.domain.BaseDomain;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
