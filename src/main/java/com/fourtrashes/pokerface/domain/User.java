@@ -14,7 +14,7 @@ import javax.persistence.*;
 @Setter
 @Entity
 @Table(name = "user")
-public class User {
+public class User{
 
     @Id
     @Column(name="userId")
