@@ -1,6 +1,10 @@
 package com.fourtrashes.pokerface.domain;
 
 
+
+
+import com.fourtrashes.pokerface.domain.BaseDomain;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,26 +18,23 @@ import javax.persistence.*;
 @Setter
 @Entity
 @Table(name = "user")
-public class User{
+public class User extends BaseDomain {
 
     @Id
-    @Column(name="userId")
+    @Column(name="userNo")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
+    private Long userNo;
 
-    @Column(name="userNickname", length = 50 ,nullable = false)
-    private String userNickname;
+    @Column(name="userId", nullable = false)
+    private String userId;
 
-    @Column(name="userPassword", length = 200 ,nullable = false)
+    @Column(name="userPassword", nullable = false)
     private String userPassword;
-
-    @Column(name="userSalt", length = 200, nullable = false)
-    private String userSalt;
 
     @Column(name="userName",nullable = false)
     private String userName;
 
-    @Column(name="money")
+    @Column(name="money",nullable = false)
     private Long money;
 
     @Enumerated(EnumType.STRING)

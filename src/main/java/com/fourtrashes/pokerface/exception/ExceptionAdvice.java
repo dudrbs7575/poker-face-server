@@ -12,4 +12,9 @@ public class ExceptionAdvice {
     protected ResponseEntity<ErrorDTO> serviceExceptionHandler(ServiceException e) {
         return new ResponseEntity(new ErrorDTO(e), HttpStatus.OK);
     }
+
+    @ExceptionHandler(WebSocketException.class)
+    protected String handleSocketException(WebSocketException e) {
+        return e.getErrorMessage();
+    }
 }
